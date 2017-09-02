@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Issue` struct in crate `goji`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Issue">
+
+    <title>goji::Issue - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Issue</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>goji</a></p><script>window.sidebarCurrent = {name: 'Issue', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>goji</a>::<wbr><a class="struct" href=''>Issue</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/goji/rep.rs.html#17-24' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Issue {
+    pub self_link: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
+    pub key: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
+    pub id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    pub fields: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/btree/map/struct.BTreeMap.html" title="struct alloc::btree::map::BTreeMap">BTreeMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="https://docs.rs/serde_json/1.0.2/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;,
+}</pre><div class='docblock'><p>represents a single jira issue</p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.self_link' class="structfield">
+                           <span id='self_link.v' class='invisible'>
+                           <code>self_link: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code>
+                           </span></span><span id='structfield.key' class="structfield">
+                           <span id='key.v' class='invisible'>
+                           <code>key: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code>
+                           </span></span><span id='structfield.id' class="structfield">
+                           <span id='id.v' class='invisible'>
+                           <code>id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code>
+                           </span></span><span id='structfield.fields' class="structfield">
+                           <span id='fields.v' class='invisible'>
+                           <code>fields: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/btree/map/struct.BTreeMap.html" title="struct alloc::btree::map::BTreeMap">BTreeMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="enum" href="https://docs.rs/serde_json/1.0.2/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../goji/struct.Issue.html" title="struct goji::Issue">Issue</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/goji/rep.rs.html#26-140' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.field' class="method"><span id='field.v' class='invisible'><code>fn <a href='#method.field' class='fnname'>field</a>&lt;'a, F&gt;(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../goji/type.Result.html" title="type goji::Result">Result</a>&lt;F&gt;&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://docs.rs/serde/1.0.11/serde/de/trait.Deserialize.html" title="trait serde::de::Deserialize">Deserialize</a>&lt;'de&gt;,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>resolves a typed field from an issues lists of arbitrary fields</p>
+</div><h4 id='method.assignee' class="method"><span id='assignee.v' class='invisible'><code>fn <a href='#method.assignee' class='fnname'>assignee</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.User.html" title="struct goji::User">User</a>&gt;</code></span></h4>
+<div class='docblock'><p>user assigned to issue</p>
+</div><h4 id='method.creator' class="method"><span id='creator.v' class='invisible'><code>fn <a href='#method.creator' class='fnname'>creator</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.User.html" title="struct goji::User">User</a>&gt;</code></span></h4>
+<div class='docblock'><p>user that created the issue</p>
+</div><h4 id='method.reporter' class="method"><span id='reporter.v' class='invisible'><code>fn <a href='#method.reporter' class='fnname'>reporter</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.User.html" title="struct goji::User">User</a>&gt;</code></span></h4>
+<div class='docblock'><p>user that reported the issue</p>
+</div><h4 id='method.status' class="method"><span id='status.v' class='invisible'><code>fn <a href='#method.status' class='fnname'>status</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.Status.html" title="struct goji::Status">Status</a>&gt;</code></span></h4>
+<div class='docblock'><p>the current status of the issue</p>
+</div><h4 id='method.summary' class="method"><span id='summary.v' class='invisible'><code>fn <a href='#method.summary' class='fnname'>summary</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>brief summary of the issue</p>
+</div><h4 id='method.description' class="method"><span id='description.v' class='invisible'><code>fn <a href='#method.description' class='fnname'>description</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>description of the issue</p>
+</div><h4 id='method.updated' class="method"><span id='updated.v' class='invisible'><code>fn <a href='#method.updated' class='fnname'>updated</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>updated timestamp</p>
+</div><h4 id='method.created' class="method"><span id='created.v' class='invisible'><code>fn <a href='#method.created' class='fnname'>created</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>created timestamp</p>
+</div><h4 id='method.resolution_date' class="method"><span id='resolution_date.v' class='invisible'><code>fn <a href='#method.resolution_date' class='fnname'>resolution_date</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h4>
+<h4 id='method.issue_type' class="method"><span id='issue_type.v' class='invisible'><code>fn <a href='#method.issue_type' class='fnname'>issue_type</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.IssueType.html" title="struct goji::IssueType">IssueType</a>&gt;</code></span></h4>
+<div class='docblock'><p>an issue type</p>
+</div><h4 id='method.labels' class="method"><span id='labels.v' class='invisible'><code>fn <a href='#method.labels' class='fnname'>labels</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>labels associated with the issue</p>
+</div><h4 id='method.fix_versions' class="method"><span id='fix_versions.v' class='invisible'><code>fn <a href='#method.fix_versions' class='fnname'>fix_versions</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../goji/struct.Version.html" title="struct goji::Version">Version</a>&gt;</code></span></h4>
+<div class='docblock'><p>list of versions associated with the issue</p>
+</div><h4 id='method.priority' class="method"><span id='priority.v' class='invisible'><code>fn <a href='#method.priority' class='fnname'>priority</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.Priority.html" title="struct goji::Priority">Priority</a>&gt;</code></span></h4>
+<div class='docblock'><p>priority of the issue</p>
+</div><h4 id='method.links' class="method"><span id='links.v' class='invisible'><code>fn <a href='#method.links' class='fnname'>links</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../goji/type.Result.html" title="type goji::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../goji/struct.IssueLink.html" title="struct goji::IssueLink">IssueLink</a>&gt;&gt;&gt;</code></span></h4>
+<div class='docblock'><p>links to other issues</p>
+</div><h4 id='method.project' class="method"><span id='project.v' class='invisible'><code>fn <a href='#method.project' class='fnname'>project</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.Project.html" title="struct goji::Project">Project</a>&gt;</code></span></h4>
+<h4 id='method.resolution' class="method"><span id='resolution.v' class='invisible'><code>fn <a href='#method.resolution' class='fnname'>resolution</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../goji/struct.Resolution.html" title="struct goji::Resolution">Resolution</a>&gt;</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../goji/struct.Issue.html" title="struct goji::Issue">Issue</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/goji/rep.rs.html#16' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "goji";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
