@@ -11,7 +11,7 @@ extern crate url;
 
 use std::io::Read;
 
-use reqwest::header::{Authorization, Basic};
+use reqwest::header::{Authorization, Basic, Cookie};
 use reqwest::{Client, Method, StatusCode};
 use reqwest::header::ContentType;
 use serde::Serialize;
@@ -37,6 +37,8 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub enum Credentials {
     /// username and password credentials
     Basic(String, String), // todo: OAuth
+    /// Cookie auth via JSESSIONID
+    Cookie(String),
 }
 
 /// Entrypoint into client interface
@@ -121,6 +123,12 @@ impl Jira {
                     username: user.to_owned(),
                     password: Some(pass.to_owned()),
                 })).header(ContentType::json())
+            }
+            Credentials::Cookie(ref jsessionid) => {
+                let mut cookie = Cookie::new();
+                cookie.append("JSESSIONID", jsessionid.to_owned());
+                req.header(cookie)
+                    .header(ContentType::json())
             }
         };
 
