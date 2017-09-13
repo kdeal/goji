@@ -23,6 +23,8 @@ mod issues;
 pub use issues::*;
 mod search;
 pub use search::Search;
+mod session;
+pub use session::*;
 mod builder;
 pub use builder::*;
 mod errors;
@@ -37,8 +39,9 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub enum Credentials {
     /// username and password credentials
     Basic(String, String), // todo: OAuth
-    /// Cookie auth via JSESSIONID
-    Cookie(String),
+    /// Cookie auth
+    Cookie(String, String),
+    None,
 }
 
 /// Entrypoint into client interface
@@ -93,27 +96,32 @@ impl Jira {
         Issues::new(self)
     }
 
+    // return session interface
+    pub fn session(&self) -> Session {
+        Session::new(self)
+    }
+
     fn post<D, S>(&self, endpoint: &str, body: S) -> Result<D>
     where
         D: DeserializeOwned,
         S: Serialize,
     {
         let data = try!(serde_json::to_string::<S>(&body));
-        self.request::<D>(Method::Post, endpoint, Some(data.into_bytes()))
+        self.request::<D>(Method::Post, endpoint, "api", Some(data.into_bytes()))
     }
 
     fn get<D>(&self, endpoint: &str) -> Result<D>
     where
         D: DeserializeOwned,
     {
-        self.request::<D>(Method::Get, endpoint, None)
+        self.request::<D>(Method::Get, endpoint, "api", None)
     }
 
-    fn request<D>(&self, method: Method, endpoint: &str, body: Option<Vec<u8>>) -> Result<D>
+    fn request<D>(&self, method: Method, endpoint: &str, rest_api: &str, body: Option<Vec<u8>>) -> Result<D>
     where
         D: DeserializeOwned,
     {
-        let url = format!("{}/rest/api/latest{}", self.host, endpoint);
+        let url = format!("{}/rest/{}/latest{}", self.host, rest_api, endpoint);
         debug!("url -> {:?}", url);
 
         let mut req = self.client.request(method, &url)?;
@@ -122,15 +130,15 @@ impl Jira {
                 req.header(Authorization(Basic {
                     username: user.to_owned(),
                     password: Some(pass.to_owned()),
-                })).header(ContentType::json())
+                }))
             }
-            Credentials::Cookie(ref jsessionid) => {
+            Credentials::Cookie(ref name, ref value) => {
                 let mut cookie = Cookie::new();
-                cookie.append("JSESSIONID", jsessionid.to_owned());
+                cookie.append(name.to_owned(), value.to_owned());
                 req.header(cookie)
-                    .header(ContentType::json())
             }
-        };
+            Credentials::None => &mut req,
+        }.header(ContentType::json());
 
         let mut res = try!(match body {
             Some(bod) => builder.body(bod).send(),
