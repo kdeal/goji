@@ -110,6 +110,15 @@ impl Jira {
         self.request::<D>(Method::Post, endpoint, "api", Some(data.into_bytes()))
     }
 
+    fn put<D, S>(&self, endpoint: &str, body: S) -> Result<D>
+    where
+        D: DeserializeOwned,
+        S: Serialize,
+    {
+        let data = try!(serde_json::to_string::<S>(&body));
+        self.request::<D>(Method::Put, endpoint, "api", Some(data.into_bytes()))
+    }
+
     fn get<D>(&self, endpoint: &str) -> Result<D>
     where
         D: DeserializeOwned,
